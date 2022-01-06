@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     .setPositiveButton("VER SITE", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent navIt = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ufrn.br/"));
+                            Intent navIt = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/uriellopes/AdotePets"));
                             startActivity(navIt);
                         }
                     })
