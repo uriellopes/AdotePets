@@ -10,18 +10,20 @@ import android.view.MenuItem;
 import android.widget.SearchView;
 
 import com.example.adotepets.fragments.InfoDialogFragment;
+import com.example.adotepets.fragments.ListaPersonalizadaFragment;
 
 public class BuscarPet extends AppCompatActivity {
 
-    private FragmentManager manager;
+    private ListaPersonalizadaFragment lista_personalizada;
+    private FragmentManager fragment_manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_buscar_pet);
 
-        manager = getSupportFragmentManager();
+        fragment_manager = getSupportFragmentManager();
+        lista_personalizada = (ListaPersonalizadaFragment) fragment_manager.findFragmentById(R.id.listaPersonalizadaFragment);
     }
 
     @Override
@@ -39,7 +41,7 @@ public class BuscarPet extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if( item.getItemId() == R.id.menu_info ) {
             InfoDialogFragment dialog = new InfoDialogFragment();
-            dialog.show(manager, "INFO");
+            dialog.show(fragment_manager, "INFO");
         }
         return super.onOptionsItemSelected(item);
     }

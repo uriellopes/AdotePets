@@ -21,4 +21,12 @@ public class Pet implements Serializable {
         this.tamanho = tamanho;
         this.peso = peso;
     }
+
+    public String getTipo() {
+        return this.tipo;
+    };
+
+    public String getRaca() {
+        return this.raca;
+    }
 }
