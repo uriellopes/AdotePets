@@ -1,63 +1,24 @@
 package com.example.adotepets.model;
 
-import android.widget.ImageView;
-
 import java.io.Serializable;
 
 public class Pet implements Serializable {
 
     private String tipo; // cao, gato, hammster, etc
     private String raca; // raca dependendo do tipo ex: tipo cao -> raca -> dobberman
-    private float idade;
-    private ImageView foto;
+    private String sexo; // Macho, femea
+    private String descricao; // Descricao do pet completa
+    private int idade; // Idade do pet em meses
+    private int tamanho; // Tamanho do pet em centimetros
+    private float peso; // Peso do cachorro em g
 
-    private enum sexo {
-        MACHO, FEMEA, INDEFINIDO
-    };
-    private enum situacao {
-        DOADO, RESGATADO, EM_RECUPERACAO
-    }; // doado pelo antigo dono, resgatado, em recuperacao, etc
-
-
-    public Pet() {
-    }
-
-    public Pet(String tipo, String raca, float idade, ImageView foto) {
+    public Pet(String tipo, String raca, String sexo, String descricao, int idade, int tamanho, float peso) {
         this.tipo = tipo;
         this.raca = raca;
+        this.sexo = sexo;
+        this.descricao = descricao;
         this.idade = idade;
-        this.foto = foto;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getRaca() {
-        return raca;
-    }
-
-    public void setRaca(String raca) {
-        this.raca = raca;
-    }
-
-    public float getIdade() {
-        return idade;
-    }
-
-    public void setIdade(float idade) {
-        this.idade = idade;
-    }
-
-    public ImageView getFoto() {
-        return foto;
-    }
-
-    public void setFoto(ImageView foto) {
-        this.foto = foto;
+        this.tamanho = tamanho;
+        this.peso = peso;
     }
 }
