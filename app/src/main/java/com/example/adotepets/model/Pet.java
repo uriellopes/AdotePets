@@ -29,4 +29,6 @@ public class Pet implements Serializable {
     public String getRaca() {
         return this.raca;
     }
+
+    public String getDescricao() { return this.descricao; }
 }

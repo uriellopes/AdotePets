@@ -10,20 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AdotePets">
         <activity
+            android:name=".DetalhePetActivity"
+            android:exported="false"
+            android:parentActivityName=".BuscarPet">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".BuscarPet" />
+        </activity>
+        <activity
             android:name=".AdicionarPet"
-            android:parentActivityName=".MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".BuscarPet"
-            android:parentActivityName=".MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".MainActivity"

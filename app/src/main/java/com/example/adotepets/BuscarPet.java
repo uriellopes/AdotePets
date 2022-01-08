@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,8 +12,9 @@ import android.widget.SearchView;
 
 import com.example.adotepets.fragments.InfoDialogFragment;
 import com.example.adotepets.fragments.ListaPersonalizadaFragment;
+import com.example.adotepets.model.Pet;
 
-public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTextListener, ListaPersonalizadaFragment.clickOnListItem {
 
     private ListaPersonalizadaFragment lista_personalizada;
     private FragmentManager fragment_manager;
@@ -57,5 +59,16 @@ public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTe
     public boolean onQueryTextChange(String newText) {
         lista_personalizada.buscar(newText);
         return false;
+    }
+
+    public void clickOnPet(Pet pet) {
+        Intent it = new Intent(this, DetalhePetActivity.class);
+        it.putExtra("pet",pet);
+        startActivity(it);
+    }
+
+    @Override
+    public void clickOnListItem(Pet pet) {
+        clickOnPet(pet);
     }
 }

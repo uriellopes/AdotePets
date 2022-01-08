@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adotepets.R;
@@ -16,6 +17,7 @@ import java.util.List;
 public class AdapterPersonalizado extends RecyclerView.Adapter<AdapterPersonalizado.myViewHolder> {
 
     private List<Pet> lista_pets;
+    private itemListClick listener;
 
     public AdapterPersonalizado(List<Pet> pets) {
         this.lista_pets = pets;
@@ -41,16 +43,33 @@ public class AdapterPersonalizado extends RecyclerView.Adapter<AdapterPersonaliz
         return lista_pets.size();
     }
 
-    public class myViewHolder extends RecyclerView.ViewHolder {
+    public class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView pet_tipo;
         TextView pet_raca;
+        CardView card_item_lista;
 
         public myViewHolder(View itemView) {
             super(itemView);
 
             pet_tipo = itemView.findViewById(R.id.card_item_lista_tipo);
             pet_raca = itemView.findViewById(R.id.card_item_lista_raca);
+            card_item_lista = itemView.findViewById(R.id.card_item_lista);
+
+            card_item_lista.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            listener.itemListClick(getLayoutPosition());
+        }
+    }
+
+    public interface itemListClick {
+        void itemListClick(int position);
+    }
+
+    public void implementItemListClick(itemListClick listener) {
+        this.listener = listener;
     }
 }

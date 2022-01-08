@@ -1,5 +1,6 @@
 package com.example.adotepets.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -45,10 +46,26 @@ public class ListaPersonalizadaFragment extends Fragment {
         pets_lista.setHasFixedSize(true);
         pets_lista.setAdapter(adapter_personalizado);
 
+        adapter_personalizado.implementItemListClick(new AdapterPersonalizado.itemListClick() {
+            @Override
+            public void itemListClick(int position) {
+                Activity activity = getActivity();
+
+                if(activity instanceof clickOnListItem ) {
+                    clickOnListItem listener = (clickOnListItem) activity;
+                    listener.clickOnListItem(pets.get(position));
+                }
+            }
+        });
+
         return layout;
     }
 
-        private List<Pet> carregarDados() {
+    public interface clickOnListItem{
+        public void clickOnListItem(Pet pet);
+    }
+
+    private List<Pet> carregarDados() {
 
         List<Pet> pets = new ArrayList<Pet>();
 
