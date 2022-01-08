@@ -3,4 +3,6 @@
     <string name="sobre_titulo">Integrantes</string>
     <string name="sobre_integrantes">André - 20210071890 \nBruno - 20190002989 \nJosue - 20170145993 \nUriel - 2016045704
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
