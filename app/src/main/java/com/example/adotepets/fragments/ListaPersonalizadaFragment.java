@@ -59,4 +59,31 @@ public class ListaPersonalizadaFragment extends Fragment {
 
         return pets;
     }
+
+    public void buscar(String s){
+
+        if(s == null || s.trim().equals("")){
+            clear();
+            return;
+        }
+
+        List<Pet> filtro = new ArrayList<Pet>(pets);
+
+        for(int i = filtro.size()-1; i >= 0; i--){
+            Pet pet = filtro.get(i);
+
+            if(!pet.getTipo().toUpperCase().contains(s.toUpperCase()) && !pet.getRaca().toUpperCase().contains(s.toUpperCase())){
+                filtro.remove(pet);
+            }
+        }
+
+        adapter_personalizado = new AdapterPersonalizado(filtro);
+        pets_lista.setAdapter(adapter_personalizado);
+    }
+
+    public void clear(){
+        adapter_personalizado = new AdapterPersonalizado(pets);
+        pets_lista.setAdapter(adapter_personalizado);
+
+    }
 }

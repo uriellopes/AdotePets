@@ -12,7 +12,7 @@ import android.widget.SearchView;
 import com.example.adotepets.fragments.InfoDialogFragment;
 import com.example.adotepets.fragments.ListaPersonalizadaFragment;
 
-public class BuscarPet extends AppCompatActivity {
+public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private ListaPersonalizadaFragment lista_personalizada;
     private FragmentManager fragment_manager;
@@ -28,11 +28,13 @@ public class BuscarPet extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.menu_buscar, menu);
 
         MenuItem searchItem = menu.findItem(R.id.menu_pesquisar);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint("Procurar...");
+        searchView.setOnQueryTextListener(this);
 
         return true;
     }
@@ -44,5 +46,16 @@ public class BuscarPet extends AppCompatActivity {
             dialog.show(fragment_manager, "INFO");
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        lista_personalizada.buscar(newText);
+        return false;
     }
 }
