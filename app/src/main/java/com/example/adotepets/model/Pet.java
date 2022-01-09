@@ -49,4 +49,27 @@ public class Pet implements Serializable {
             return "" + this.idade + " meses";
         }
     }
+
+    public String getTamanho() {
+        if( this.tamanho > 100 ) {
+            int metro = this.tamanho/100;
+            int cm = this.tamanho%100;
+            if( cm > 0 ) {
+                return "" + metro + "." + cm + "m";
+            } else {
+                return "" + metro + "m";
+            }
+        } else {
+            return "" + this.tamanho + "cm";
+        }
+    }
+
+    public String getPeso() {
+        if( this.peso < 1 ) {
+            int g = (int) (this.peso * 1000);
+            return "" + g + "g";
+        } else {
+            return "" + this.peso + "kg";
+        }
+    }
 }

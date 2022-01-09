@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         pets.add(new Pet("Cachorro", "Pinscher", "Femea", "Filhote encontrado dentro de um saco de lixo no rio", 2, 12, 1f));
         pets.add(new Pet("Gato", "Siamês", "Femea", "Gato adulto de olhos azuis cego de um olho", 27, 27, 3.8f));
         pets.add(new Pet("Passarinho", "Calopsita ", "Macho", "Recuperado em operacao policial de traficante de animais", 17, 42, 0.91f));
+        pets.add(new Pet("Leão", "Africano ", "Macho", "Recuperado ", 46, 257, 128.97f));
 
         return pets;
     }
