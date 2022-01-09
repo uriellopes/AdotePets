@@ -1,6 +1,7 @@
 package com.example.adotepets;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -12,9 +13,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.adotepets.fragments.InfoDialogFragment;
+import com.example.adotepets.model.Pet;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int ADICIONAR_ACTIVITY_REQUEST = 1;
+    private static final int BUSCAR_ACTIVITY_REQUEST = 2;
     private FragmentManager manager;
 
     Button btnBuscarPet;
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(), BuscarPet.class);
-                startActivity(it);
+                startActivityForResult(it, BUSCAR_ACTIVITY_REQUEST);
             }
         });
 
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(), AdicionarPet.class);
-                startActivity(it);
+                startActivityForResult(it, ADICIONAR_ACTIVITY_REQUEST);
             }
         });
     }
@@ -59,5 +63,26 @@ public class MainActivity extends AppCompatActivity {
         InfoDialogFragment dialog = new InfoDialogFragment();
         dialog.show(manager, "INFO");
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ( requestCode == ADICIONAR_ACTIVITY_REQUEST ) {
+            if ( resultCode == RESULT_OK && data != null ) {
+
+                // MANIPULAR DATA RETURNADO PELA ACTIVITY ADICIONAR PET
+
+            }
+        }
+
+        if ( requestCode == BUSCAR_ACTIVITY_REQUEST ) {
+            if( resultCode == RESULT_OK && data != null ) {
+
+                // MANIPULAR DATA RETURNADO PELA ACTIVITY BUSCAR PET
+
+            }
+        }
     }
 }
