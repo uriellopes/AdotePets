@@ -3,6 +3,7 @@ package com.example.adotepets;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.widget.SearchView;
 import com.example.adotepets.fragments.InfoDialogFragment;
 import com.example.adotepets.fragments.ListaPersonalizadaFragment;
 import com.example.adotepets.model.Pet;
+
+import java.util.List;
 
 public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTextListener, ListaPersonalizadaFragment.clickOnListItem {
 
@@ -25,7 +28,19 @@ public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTe
         setContentView(R.layout.activity_buscar_pet);
 
         fragment_manager = getSupportFragmentManager();
-        lista_personalizada = (ListaPersonalizadaFragment) fragment_manager.findFragmentById(R.id.listaPersonalizadaFragment);
+
+        Intent it = getIntent();
+
+        List<Pet> pets = (List<Pet>) it.getExtras().getSerializable("lista_pets");
+
+        lista_personalizada = ListaPersonalizadaFragment.newInstance(pets);
+
+        fragment_manager = getSupportFragmentManager();
+
+        FragmentTransaction transaction = fragment_manager.beginTransaction();
+
+        transaction.replace(R.id.buscar_activity, lista_personalizada, ListaPersonalizadaFragment.TAG_LISTA_PERSONALIZADA);
+        transaction.commit();
     }
 
     @Override
@@ -43,10 +58,15 @@ public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTe
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if( item.getItemId() == R.id.menu_info ) {
-            InfoDialogFragment dialog = new InfoDialogFragment();
-            dialog.show(fragment_manager, "INFO");
+        switch (item.getItemId()) {
+            case R.id.menu_info:
+                InfoDialogFragment dialog = new InfoDialogFragment();
+                dialog.show(fragment_manager, "INFO");
+                break;
+            default:
+                break;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -62,7 +82,7 @@ public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTe
     }
 
     public void clickOnPet(Pet pet) {
-        Intent it = new Intent(this, DetalhePetActivity.class);
+        Intent it = new Intent(getApplicationContext(), DetalhePetActivity.class);
         it.putExtra("pet",pet);
         startActivity(it);
     }

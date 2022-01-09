@@ -15,18 +15,34 @@ import com.example.adotepets.R;
 import com.example.adotepets.adapters.AdapterPersonalizado;
 import com.example.adotepets.model.Pet;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListaPersonalizadaFragment extends Fragment {
 
+    public static final String TAG_LISTA_PERSONALIZADA = "tagListaPersonalizada";
+
     RecyclerView pets_lista;
     AdapterPersonalizado adapter_personalizado;
     List<Pet> pets = new ArrayList<Pet>();
 
+    public ListaPersonalizadaFragment() {
+        // Required empty public constructor
+    }
+
+    public static ListaPersonalizadaFragment newInstance(List<Pet> pets) {
+        ListaPersonalizadaFragment fragment = new ListaPersonalizadaFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("lista_pets", (Serializable) pets);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        pets = (List<Pet>) getArguments().getSerializable("lista_pets");
     }
 
     @Override
@@ -36,7 +52,6 @@ public class ListaPersonalizadaFragment extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_lista_personalizada, container, false);
 
         pets_lista = layout.findViewById(R.id.listaPersonalizada);
-        pets = carregarDados();
 
         adapter_personalizado = new AdapterPersonalizado(pets);
 
@@ -65,18 +80,6 @@ public class ListaPersonalizadaFragment extends Fragment {
         public void clickOnListItem(Pet pet);
     }
 
-    private List<Pet> carregarDados() {
-
-        List<Pet> pets = new ArrayList<Pet>();
-
-        pets.add(new Pet("Cachorro", "Poodle", "Macho", "Cachorro pelo branco, encontrado em casa abandonada com a pata esquerda ferida", 36, 38, 21.3f));
-        pets.add(new Pet("Cachorro", "Pinscher", "Femea", "Filhote encontrado dentro de um saco de lixo no rio", 2, 12, 1f));
-        pets.add(new Pet("Gato", "Siamês", "Femea", "Gato adulto de olhos azuis cego de um olho", 27, 27, 3.8f));
-        pets.add(new Pet("Passarinho", "Calopsita ", "Macho", "Recuperado em operacao policial de traficante de animais", 17, 42, 0.91f));
-
-        return pets;
-    }
-
     public void buscar(String s){
 
         if(s == null || s.trim().equals("")){
@@ -96,11 +99,33 @@ public class ListaPersonalizadaFragment extends Fragment {
 
         adapter_personalizado = new AdapterPersonalizado(filtro);
         pets_lista.setAdapter(adapter_personalizado);
+        adapter_personalizado.implementItemListClick(new AdapterPersonalizado.itemListClick() {
+            @Override
+            public void itemListClick(int position) {
+                Activity activity = getActivity();
+
+                if(activity instanceof clickOnListItem ) {
+                    clickOnListItem listener = (clickOnListItem) activity;
+                    listener.clickOnListItem(filtro.get(position));
+                }
+            }
+        });
     }
 
     public void clear(){
         adapter_personalizado = new AdapterPersonalizado(pets);
         pets_lista.setAdapter(adapter_personalizado);
+        adapter_personalizado.implementItemListClick(new AdapterPersonalizado.itemListClick() {
+            @Override
+            public void itemListClick(int position) {
+                Activity activity = getActivity();
+
+                if(activity instanceof clickOnListItem ) {
+                    clickOnListItem listener = (clickOnListItem) activity;
+                    listener.clickOnListItem(pets.get(position));
+                }
+            }
+        });
 
     }
 }

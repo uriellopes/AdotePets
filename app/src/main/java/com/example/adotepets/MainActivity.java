@@ -15,6 +15,10 @@ import android.widget.Button;
 import com.example.adotepets.fragments.InfoDialogFragment;
 import com.example.adotepets.model.Pet;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int ADICIONAR_ACTIVITY_REQUEST = 1;
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnBuscarPet;
     Button btnAdicionarPet;
+
+    List<Pet> pets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +41,13 @@ public class MainActivity extends AppCompatActivity {
         btnBuscarPet = findViewById(R.id.btn_buscar);
         btnAdicionarPet = findViewById(R.id.btn_adicionar);
 
+        pets = carregarDados();
+
         btnBuscarPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(), BuscarPet.class);
+                it.putExtra("lista_pets", (Serializable) pets);
                 startActivityForResult(it, BUSCAR_ACTIVITY_REQUEST);
             }
         });
@@ -82,7 +91,22 @@ public class MainActivity extends AppCompatActivity {
 
                 // MANIPULAR DATA RETURNADO PELA ACTIVITY BUSCAR PET
 
+                String s = data.getStringExtra("keyName");
+                btnBuscarPet.setText(s);
+
             }
         }
+    }
+
+    private List<Pet> carregarDados() {
+
+        List<Pet> pets = new ArrayList<Pet>();
+
+        pets.add(new Pet("Cachorro", "Poodle", "Macho", "Cachorro pelo branco, encontrado em casa abandonada com a pata esquerda ferida", 36, 38, 21.3f));
+        pets.add(new Pet("Cachorro", "Pinscher", "Femea", "Filhote encontrado dentro de um saco de lixo no rio", 2, 12, 1f));
+        pets.add(new Pet("Gato", "Siamês", "Femea", "Gato adulto de olhos azuis cego de um olho", 27, 27, 3.8f));
+        pets.add(new Pet("Passarinho", "Calopsita ", "Macho", "Recuperado em operacao policial de traficante de animais", 17, 42, 0.91f));
+
+        return pets;
     }
 }
