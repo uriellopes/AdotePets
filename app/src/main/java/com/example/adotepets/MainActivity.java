@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnBuscarPet;
     Button btnAdicionarPet;
+    Button btnTestePet;
 
     List<Pet> pets;
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnBuscarPet = findViewById(R.id.btn_buscar);
         btnAdicionarPet = findViewById(R.id.btn_adicionar);
+        btnTestePet = findViewById(R.id.btn_teste);
 
         pets = carregarDados();
 
@@ -57,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(), AdicionarPet.class);
                 startActivityForResult(it, ADICIONAR_ACTIVITY_REQUEST);
+            }
+        });
+
+        btnTestePet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(), TesteImagem.class);
+                startActivity(it);
             }
         });
     }
