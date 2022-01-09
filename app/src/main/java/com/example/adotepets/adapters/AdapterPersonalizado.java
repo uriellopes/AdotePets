@@ -36,6 +36,9 @@ public class AdapterPersonalizado extends RecyclerView.Adapter<AdapterPersonaliz
 
         holder.pet_tipo.setText(pet.getTipo());
         holder.pet_raca.setText(pet.getRaca());
+        holder.pet_sexo.setText(pet.getSexo());
+        holder.pet_idade.setText(pet.getIdade());
+
     }
 
     @Override
@@ -47,6 +50,8 @@ public class AdapterPersonalizado extends RecyclerView.Adapter<AdapterPersonaliz
 
         TextView pet_tipo;
         TextView pet_raca;
+        TextView pet_sexo;
+        TextView pet_idade;
         CardView card_item_lista;
 
         public myViewHolder(View itemView) {
@@ -54,6 +59,8 @@ public class AdapterPersonalizado extends RecyclerView.Adapter<AdapterPersonaliz
 
             pet_tipo = itemView.findViewById(R.id.card_item_lista_tipo);
             pet_raca = itemView.findViewById(R.id.card_item_lista_raca);
+            pet_sexo = itemView.findViewById(R.id.card_item_lista_sexo);
+            pet_idade = itemView.findViewById(R.id.card_item_lista_idade);
             card_item_lista = itemView.findViewById(R.id.card_item_lista);
 
             card_item_lista.setOnClickListener(this);

@@ -31,4 +31,22 @@ public class Pet implements Serializable {
     }
 
     public String getDescricao() { return this.descricao; }
+
+    public String getSexo() {
+        return this.sexo;
+    }
+
+    public String getIdade() {
+        if( this.idade > 12 ) {
+            int anos = this.idade/12;
+            int meses = this.idade%12;
+            if ( meses > 0 ) {
+                return "" + anos + " anos e " + meses + " meses";
+            } else {
+                return "" + anos + " anos";
+            }
+        } else {
+            return "" + this.idade + " meses";
+        }
+    }
 }
