@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         if ( requestCode == ADICIONAR_ACTIVITY_REQUEST ) {
             if ( resultCode == RESULT_OK && data != null ) {
 
-                // MANIPULAR DATA RETURNADO PELA ACTIVITY ADICIONAR PET
+                // MANIPULAR DATA RETORNADO PELA ACTIVITY ADICIONAR PET
 
             }
         }
@@ -99,10 +99,7 @@ public class MainActivity extends AppCompatActivity {
         if ( requestCode == BUSCAR_ACTIVITY_REQUEST ) {
             if( resultCode == RESULT_OK && data != null ) {
 
-                // MANIPULAR DATA RETURNADO PELA ACTIVITY BUSCAR PET
-
-                String s = data.getStringExtra("keyName");
-                btnBuscarPet.setText(s);
+                // MANIPULAR DATA RETORNADO PELA ACTIVITY BUSCAR PET
 
             }
         }
