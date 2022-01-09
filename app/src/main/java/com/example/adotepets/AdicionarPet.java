@@ -21,7 +21,6 @@ public class AdicionarPet extends AppCompatActivity {
         setContentView(R.layout.activity_adicionar_pet);
 
         manager = getSupportFragmentManager();
-
     }
 
     @Override
