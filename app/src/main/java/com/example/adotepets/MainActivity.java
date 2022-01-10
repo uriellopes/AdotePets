@@ -113,7 +113,9 @@ public class MainActivity extends AppCompatActivity {
         pets.add(new Pet("Cachorro", "Pinscher", "Femea", "Filhote encontrado dentro de um saco de lixo no rio", 2, 12, 1f));
         pets.add(new Pet("Gato", "Siamês", "Femea", "Gato adulto de olhos azuis cego de um olho", 27, 27, 3.8f));
         pets.add(new Pet("Passarinho", "Calopsita ", "Macho", "Recuperado em operacao policial de traficante de animais", 17, 42, 0.91f));
-        pets.add(new Pet("Leão", "Africano ", "Macho", "Recuperado ", 46, 257, 128.97f));
+        pets.add(new Pet("Macaco", "Prego", "Macho", "Atropelado na avenida e muito machucado", 13, 37, 3.6f));
+        pets.add(new Pet("Gato", "sphynx", "Macho", "Dono vai se mudar para apertamento onde não é permitido animais e não pode mais ficar com ele ", 28, 34, 3.4f));
+        pets.add(new Pet("Arara", "Azul ", "Femea", "Captura por caçadores ilegais e recuperado pelo IBAMA ", 15, 48, 2.37f));
 
         return pets;
     }
