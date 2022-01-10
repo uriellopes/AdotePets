@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.adotepets.fragments.AdcionarPetFragment;
 import com.example.adotepets.fragments.InfoDialogFragment;
+import com.example.adotepets.model.Pet;
 
-public class AdicionarPet extends AppCompatActivity {
+public class AdicionarPet extends AppCompatActivity implements AdcionarPetFragment.clickAdicionarPet {
 
     private FragmentManager manager;
 
@@ -36,5 +39,13 @@ public class AdicionarPet extends AppCompatActivity {
             dialog.show(manager, "INFO");
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void adicionouPet(Pet pet) {
+        Intent i = new Intent();
+        i.putExtra("novo_pet", pet);
+        setResult(RESULT_OK, i);
+        finish();
     }
 }

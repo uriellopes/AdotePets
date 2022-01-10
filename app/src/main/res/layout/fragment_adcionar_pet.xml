@@ -4,14 +4,15 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="12dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADICIONAR NOVO PET"
+        android:text="Adicionar Novo Pet"
         android:textColor="@color/black"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textSize="18dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,20 +22,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="Tipo de animal: "
+            android:text="Tipo: "
             android:labelFor="@+id/edit_tipo"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Cachorro, Gato, etc..."
+            android:maxLines="1"
+            android:layout_weight="1"
             android:id="@+id/edit_tipo"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,7 +43,9 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Poodle, Husky, etc..."
+            android:hint="Poodle, Pinscher, etc..."
+            android:layout_weight="1"
+            android:maxLines="1"
             android:id="@+id/edit_raca"/>
 
     </LinearLayout>
@@ -65,8 +64,42 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Em meses"
+            android:hint="meses"
             android:id="@+id/edit_idade"
+            android:maxLines="1"
+            android:layout_weight="1"
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Peso: "
+            android:labelFor="@+id/edit_peso"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="kg"
+            android:id="@+id/edit_peso"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tamanho: "
+            android:textColor="@color/black"
+            android:labelFor="@+id/edit_tamanho"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="cm"
+            android:layout_weight="1"
+            android:id="@+id/edit_tamanho"
+            android:maxLines="1"
             android:inputType="number"/>
 
     </LinearLayout>
@@ -85,7 +118,8 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_sexo">
+            android:id="@+id/edit_sexo"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/radioButton1"
@@ -105,61 +139,34 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/edit_vacinado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Peso: "
-                android:labelFor="@+id/edit_peso"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Em kg"
-                android:id="@+id/edit_peso"
-                android:inputType="number"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tamanho: "
-                android:textColor="@color/black"
-                android:labelFor="@+id/edit_tamanho"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Em cm"
-                android:id="@+id/edit_tamanho"
-                android:inputType="number"/>
-
-        </LinearLayout>
+            android:text="Marque essa opçãose o pet estiver vacinado " />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/editVacinado"
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ative para adicionar comentários" />
+
+
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Marque essa opçãose o pet estiver vacinado " />
+            android:hint="Comente..."
+            android:maxLines="5"
+            android:id="@+id/edit_descricao"/>
 
     </LinearLayout>
 

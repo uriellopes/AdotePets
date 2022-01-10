@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdicionarPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(BUSCAR_ACTIVITY_REQUEST, AdicionarPet.class);
+                startActivity(ADICIONAR_ACTIVITY_REQUEST, AdicionarPet.class);
             }
         });
 
@@ -89,8 +89,10 @@ public class MainActivity extends AppCompatActivity {
 
         if ( requestCode == ADICIONAR_ACTIVITY_REQUEST ) {
             if ( resultCode == RESULT_OK && data != null ) {
-
-                // MANIPULAR DATA RETORNADO PELA ACTIVITY ADICIONAR PET
+                Toast.makeText(getApplicationContext(), "Pet Adicionado com sucesso!", Toast.LENGTH_SHORT).show();
+                Pet novoPet = (Pet) data.getExtras().getSerializable("novo_pet");
+                pets.add(novoPet);
+                startActivity(BUSCAR_ACTIVITY_REQUEST, BuscarPet.class);
 
             }
         }

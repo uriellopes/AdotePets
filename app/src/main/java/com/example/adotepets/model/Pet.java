@@ -39,13 +39,26 @@ public class Pet implements Serializable {
     }
 
     public String getIdade() {
-        if( this.idade > 12 ) {
+        if( this.idade >= 12 ) {
             int anos = this.idade/12;
             int meses = this.idade%12;
-            if ( meses > 0 ) {
-                return "" + anos + " anos e " + meses + " meses";
+
+            if( anos == 1 ) {
+                if ( meses == 1 ) {
+                    return "" + anos + " ano e" + meses + " mes";
+                } else if ( meses == 0) {
+                    return "" + anos + " ano";
+                } else {
+                    return "" + anos + " ano e " + meses + " meses";
+                }
             } else {
-                return "" + anos + " anos";
+                if ( meses == 1 ) {
+                    return "" + anos + " anos e" + meses + " mes";
+                } else if ( meses == 0) {
+                    return "" + anos + " anos";
+                } else {
+                    return "" + anos + " anos e " + meses + " meses";
+                }
             }
         } else {
             return "" + this.idade + " meses";
