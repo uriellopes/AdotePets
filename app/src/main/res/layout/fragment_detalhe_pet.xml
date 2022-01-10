@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tipo"
+            android:textColor="@color/black"
             android:textSize="36dp" />
 
     </LinearLayout>
@@ -43,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Raça"
+                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textSize="18dp"
                 android:id="@+id/detalhe_raca" />
@@ -63,6 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="Idade"
                 android:layout_weight="1"
                 android:textSize="18dp"
@@ -85,6 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sexo"
+                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textSize="18dp"
                 android:id="@+id/detalhe_sexo" />
@@ -106,6 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tamanho"
+                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textSize="18dp"
                 android:id="@+id/detalhe_tamanho" />
@@ -128,6 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Peso"
+                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textSize="18dp"
                 android:id="@+id/detalhe_peso" />
@@ -146,6 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/black"
             android:layout_marginBottom="12dp"
             android:labelFor="@+id/detalhe_descricao"
             android:text="Comentários Adicionais"
@@ -156,6 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Descrição"
+            android:textStyle="italic"
             android:textSize="18dp" />
     </LinearLayout>
 

@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_item_lista"
-    android:layout_margin="4dp"
-    app:cardElevation="4dp"
+    android:layout_margin="2dp"
+    app:cardElevation="8dp"
     app:cardCornerRadius="4dp">
 
     <LinearLayout
@@ -24,6 +24,7 @@
                 android:layout_height="match_parent"
                 android:text="Tipo do Pet"
                 android:textSize="18dp"
+                android:textColor="@color/black"
                 android:layout_weight="5"
                 android:id="@+id/card_item_lista_tipo" />
 
