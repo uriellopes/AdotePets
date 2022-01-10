@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             if( resultCode == RESULT_OK && data != null ) {
                 int position = data.getExtras().getInt("pet_position");
                 pets.remove(position);
+                Toast.makeText(getApplicationContext(), "Pet adotado com sucesso!", Toast.LENGTH_SHORT).show();
                 startActivity(BUSCAR_ACTIVITY_REQUEST, BuscarPet.class);
             }
         }
