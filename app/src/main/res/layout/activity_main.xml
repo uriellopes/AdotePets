@@ -37,12 +37,4 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_adicionar"
         app:layout_constraintStart_toStartOf="@+id/btn_adicionar" />
 
-    <Button
-        android:id="@+id/btn_teste"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:text="Teste IMG"
-        app:layout_constraintBottom_toTopOf="@+id/btn_buscar"
-        app:layout_constraintStart_toStartOf="@+id/btn_buscar" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
