@@ -11,8 +11,9 @@ public class Pet implements Serializable {
     private int idade; // Idade do pet em meses
     private int tamanho; // Tamanho do pet em centimetros
     private float peso; // Peso do cachorro em g
+    private boolean vacinado; // True ou False
 
-    public Pet(String tipo, String raca, String sexo, String descricao, int idade, int tamanho, float peso) {
+    public Pet(String tipo, String raca, String sexo, String descricao, int idade, int tamanho, float peso, boolean vacinado) {
         this.tipo = tipo;
         this.raca = raca;
         this.sexo = sexo;
@@ -20,6 +21,7 @@ public class Pet implements Serializable {
         this.idade = idade;
         this.tamanho = tamanho;
         this.peso = peso;
+        this.vacinado = vacinado;
     }
 
     public String getTipo() {
@@ -70,6 +72,14 @@ public class Pet implements Serializable {
             return "" + g + "g";
         } else {
             return "" + this.peso + "kg";
+        }
+    }
+
+    public String getVacinado() {
+        if( vacinado ) {
+            return "Sim";
+        } else {
+            return "Não";
         }
     }
 }
