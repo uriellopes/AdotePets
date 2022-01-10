@@ -68,7 +68,7 @@ public class ListaPersonalizadaFragment extends Fragment {
 
                 if(activity instanceof clickOnListItem ) {
                     clickOnListItem listener = (clickOnListItem) activity;
-                    listener.clickOnListItem(pets.get(position));
+                    listener.clickOnListItem(pets.get(position), position);
                 }
             }
         });
@@ -77,7 +77,7 @@ public class ListaPersonalizadaFragment extends Fragment {
     }
 
     public interface clickOnListItem{
-        public void clickOnListItem(Pet pet);
+        public void clickOnListItem(Pet pet, int position);
     }
 
     public void buscar(String s){
@@ -106,7 +106,7 @@ public class ListaPersonalizadaFragment extends Fragment {
 
                 if(activity instanceof clickOnListItem ) {
                     clickOnListItem listener = (clickOnListItem) activity;
-                    listener.clickOnListItem(filtro.get(position));
+                    listener.clickOnListItem(filtro.get(position), position);
                 }
             }
         });
@@ -122,7 +122,7 @@ public class ListaPersonalizadaFragment extends Fragment {
 
                 if(activity instanceof clickOnListItem ) {
                     clickOnListItem listener = (clickOnListItem) activity;
-                    listener.clickOnListItem(pets.get(position));
+                    listener.clickOnListItem(pets.get(position), position);
                 }
             }
         });

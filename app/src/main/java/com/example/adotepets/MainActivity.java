@@ -11,7 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.adotepets.fragments.DetalhePetFragment;
 import com.example.adotepets.fragments.InfoDialogFragment;
 import com.example.adotepets.model.Pet;
 
@@ -48,17 +50,14 @@ public class MainActivity extends AppCompatActivity {
         btnBuscarPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(), BuscarPet.class);
-                it.putExtra("lista_pets", (Serializable) pets);
-                startActivityForResult(it, BUSCAR_ACTIVITY_REQUEST);
+                startActivity(BUSCAR_ACTIVITY_REQUEST, BuscarPet.class);
             }
         });
 
         btnAdicionarPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(), AdicionarPet.class);
-                startActivityForResult(it, ADICIONAR_ACTIVITY_REQUEST);
+                startActivity(BUSCAR_ACTIVITY_REQUEST, AdicionarPet.class);
             }
         });
 
@@ -98,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
 
         if ( requestCode == BUSCAR_ACTIVITY_REQUEST ) {
             if( resultCode == RESULT_OK && data != null ) {
-
-                // MANIPULAR DATA RETORNADO PELA ACTIVITY BUSCAR PET
-
+                int position = data.getExtras().getInt("pet_position");
+                pets.remove(position);
+                startActivity(BUSCAR_ACTIVITY_REQUEST, BuscarPet.class);
             }
         }
     }
@@ -118,5 +117,11 @@ public class MainActivity extends AppCompatActivity {
         pets.add(new Pet("Arara", "Azul ", "Femea", "Captura por caçadores ilegais e recuperado pelo IBAMA ", 15, 48, 2.37f));
 
         return pets;
+    }
+
+    public void startActivity(int i, Class c) {
+        Intent it = new Intent(getApplicationContext(), c);
+        it.putExtra("lista_pets", (Serializable) pets);
+        startActivityForResult(it, i);
     }
 }

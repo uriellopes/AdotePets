@@ -10,7 +10,7 @@ import android.os.Bundle;
 import com.example.adotepets.fragments.DetalhePetFragment;
 import com.example.adotepets.model.Pet;
 
-public class DetalhePetActivity extends AppCompatActivity {
+public class DetalhePetActivity extends AppCompatActivity implements DetalhePetFragment.clickAdotarPet {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +20,9 @@ public class DetalhePetActivity extends AppCompatActivity {
         Intent it = getIntent();
 
         Pet pet = (Pet) it.getExtras().getSerializable("pet");
+        int position = it.getExtras().getInt("pet_position");
 
-        DetalhePetFragment detalhe_pet =DetalhePetFragment.newInstance(pet);
+        DetalhePetFragment detalhe_pet =DetalhePetFragment.newInstance(pet, position);
 
         FragmentManager manager = getSupportFragmentManager();
 
@@ -29,5 +30,13 @@ public class DetalhePetActivity extends AppCompatActivity {
 
         transaction.replace(R.id.detalhe_pet_activity, detalhe_pet, DetalhePetFragment.TAG_PET);
         transaction.commit();
+    }
+
+    @Override
+    public void adotouPet(int position) {
+        Intent i = new Intent();
+        i.putExtra("pet_position", position);
+        setResult(RESULT_OK, i);
+        finish();
     }
 }

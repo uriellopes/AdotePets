@@ -1,6 +1,7 @@
 package com.example.adotepets;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.adotepets.fragments.InfoDialogFragment;
 import com.example.adotepets.fragments.ListaPersonalizadaFragment;
@@ -19,8 +21,11 @@ import java.util.List;
 
 public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTextListener, ListaPersonalizadaFragment.clickOnListItem {
 
+    private static final int ADOTAR_ACTIVITY_REQUEST = 1;
+
     private ListaPersonalizadaFragment lista_personalizada;
     private FragmentManager fragment_manager;
+    List<Pet> pets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,7 @@ public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTe
 
         Intent it = getIntent();
 
-        List<Pet> pets = (List<Pet>) it.getExtras().getSerializable("lista_pets");
+        pets = (List<Pet>) it.getExtras().getSerializable("lista_pets");
 
         lista_personalizada = ListaPersonalizadaFragment.newInstance(pets);
 
@@ -81,14 +86,30 @@ public class BuscarPet extends AppCompatActivity implements SearchView.OnQueryTe
         return false;
     }
 
-    public void clickOnPet(Pet pet) {
+    public void clickOnPet(Pet pet, int position) {
         Intent it = new Intent(getApplicationContext(), DetalhePetActivity.class);
         it.putExtra("pet",pet);
-        startActivity(it);
+        it.putExtra("pet_position", position);
+        startActivityForResult(it, ADOTAR_ACTIVITY_REQUEST);
     }
 
     @Override
-    public void clickOnListItem(Pet pet) {
-        clickOnPet(pet);
+    public void clickOnListItem(Pet pet, int position) {
+        clickOnPet(pet , position);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ( requestCode == ADOTAR_ACTIVITY_REQUEST ) {
+            if ( resultCode == RESULT_OK && data != null ) {
+                int position = data.getExtras().getInt("pet_position");
+                Intent i = new Intent();
+                i.putExtra("pet_position", position);
+                setResult(RESULT_OK, i);
+                finish();
+            }
+        }
     }
 }
