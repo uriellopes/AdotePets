@@ -10,7 +10,7 @@ public class Pet implements Serializable {
     private String descricao; // Descricao do pet completa
     private int idade; // Idade do pet em meses
     private int tamanho; // Tamanho do pet em centimetros
-    private float peso; // Peso do cachorro em g
+    private float peso; // Peso do cachorro em kg
     private boolean vacinado; // True ou False
 
     public Pet(String tipo, String raca, String sexo, String descricao, int idade, int tamanho, float peso, boolean vacinado) {
