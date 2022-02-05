@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Pet implements Serializable {
 
+    private int id; // Valor do id do pet salvo no banco
     private String tipo; // cao, gato, hammster, etc
     private String raca; // raca dependendo do tipo ex: tipo cao -> raca -> dobberman
     private String sexo; // Macho, femea
@@ -24,6 +25,22 @@ public class Pet implements Serializable {
         this.vacinado = vacinado;
     }
 
+    public Pet(int id, String tipo, String raca, String sexo, String descricao, int idade, int tamanho, float peso, boolean vacinado) {
+        this.id = id;
+        this.tipo = tipo;
+        this.raca = raca;
+        this.sexo = sexo;
+        this.descricao = descricao;
+        this.idade = idade;
+        this.tamanho = tamanho;
+        this.peso = peso;
+        this.vacinado = vacinado;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
     public String getTipo() {
         return this.tipo;
     };
@@ -36,6 +53,22 @@ public class Pet implements Serializable {
 
     public String getSexo() {
         return this.sexo;
+    }
+
+    public Integer getIdadeDB() {
+        return this.idade;
+    }
+
+    public Integer getTamanhoDB() {
+        return this.tamanho;
+    }
+
+    public Float getPesoDB() {
+        return this.peso;
+    }
+
+    public Boolean getVacinadoDB() {
+        return this.vacinado;
     }
 
     public String getIdade() {
