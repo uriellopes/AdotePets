@@ -34,11 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String sql_petshop = "CREATE TABLE IF NOT EXISTS " + TABELA_PETSHOP +
                 " (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 "nome VARCHAR(50) NOT NULL, " +
-                "cep VARCHAR(50) NOT NULL, " +
-                "logradouro VARCHAR(255) NOT NULL, " +
-                "numero INTEGER NOT NULL, " +
-                "bairro VARCHAR(50) NOT NULL, " +
-                "uf VARCHAR(50) NOT NULL);";
+                "endereco VARCHAR(255) NOT NULL);";
 
         try {
             db.execSQL(sql_pet);

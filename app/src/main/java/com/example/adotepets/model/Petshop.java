@@ -1,60 +1,67 @@
 package com.example.adotepets.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Petshop implements Serializable {
     private int id;
-    private String nome;
-    private String cep;
-    private String logradouro;
-    private int numero;
-    private String bairro;
-    private String uf;
+    private String nome; // cao, gato, hammster, etc
+    private String endereco;
+    private ArrayList<Pet> pets;
 
-    public Petshop (int id, String nome, String cep, String logradouro, int numero, String bairro, String uf) {
+    public Petshop(int id, String nome, String endereco, ArrayList<Pet> pets) {
         this.id = id;
         this.nome = nome;
-        this.cep = cep;
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.uf = uf;
+        this.endereco = endereco;
+        this.pets = pets;
     }
 
-    public Petshop (String nome, String cep, String logradouro, int numero, String bairro, String uf) {
+    public Petshop(String nome, String endereco, ArrayList<Pet> pets) {
         this.nome = nome;
-        this.cep = cep;
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.uf = uf;
+        this.endereco = endereco;
+        this.pets = pets;
+    }
+
+    public Petshop(int id, String nome, String endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+    }
+
+    public Petshop(String nome, String endereco) {
+        this.nome = nome;
+        this.endereco = endereco;
     }
 
     public int getId() {
         return this.id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 
-    public String getCep() {
-        return this.cep;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getLogradouro() {
-        return this.logradouro;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public int getNumero() {
-        return this.numero;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    public String getBairro() {
-        return this.bairro;
+    public ArrayList<Pet> getPets() {
+        return pets;
     }
 
-    public String getUf() {
-        return this.uf;
+    public void setPets(ArrayList<Pet> pets) {
+        this.pets = pets;
     }
 }

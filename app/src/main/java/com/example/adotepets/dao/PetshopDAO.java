@@ -36,11 +36,7 @@ public class PetshopDAO {
             petshops.add(new Petshop(
                     cursor.getInt(cursor.getColumnIndexOrThrow("id")),
                     cursor.getString(cursor.getColumnIndexOrThrow("nome")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("cep")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("logradouro")),
-                    cursor.getInt(cursor.getColumnIndexOrThrow("numero")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("bairro")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("uf"))
+                    cursor.getString(cursor.getColumnIndexOrThrow("endereco"))
             ));
         }
         cursor.close();
@@ -50,11 +46,7 @@ public class PetshopDAO {
     public boolean salvar(Petshop petshop) {
         ContentValues cv = new ContentValues();
         cv.put("nome", petshop.getNome());
-        cv.put("cep", petshop.getCep());
-        cv.put("logradouro", petshop.getLogradouro());
-        cv.put("numero", petshop.getNumero());
-        cv.put("bairro", petshop.getBairro());
-        cv.put("uf", petshop.getUf());
+        cv.put("endereco", petshop.getEndereco());
 
         try {
             escreve.insert(DBHelper.TABELA_PETSHOP, null, cv);
@@ -81,11 +73,7 @@ public class PetshopDAO {
     public boolean atualizar(Petshop petshop) {
         ContentValues cv = new ContentValues();
         cv.put("nome", petshop.getNome());
-        cv.put("cep", petshop.getCep());
-        cv.put("logradouro", petshop.getLogradouro());
-        cv.put("numero", petshop.getNumero());
-        cv.put("bairro", petshop.getBairro());
-        cv.put("uf", petshop.getUf());
+        cv.put("endereco", petshop.getEndereco());
 
         try{
             String[] args = {String.valueOf(petshop.getId())};

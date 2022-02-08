@@ -24,10 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int ADICIONAR_ACTIVITY_REQUEST = 1;
     private static final int BUSCAR_ACTIVITY_REQUEST = 2;
+    private static final int ADICIONARPETSHOP_ACTIVITY_REQUEST = 3;
     private FragmentManager manager;
 
     Button btnBuscarPet;
     Button btnAdicionarPet;
+    Button btnGerenciarPetshops;
 
     List<Pet> pets;
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnBuscarPet = findViewById(R.id.btn_buscar);
         btnAdicionarPet = findViewById(R.id.btn_adicionar);
+        btnGerenciarPetshops = findViewById(R.id.btn_gerenciarPetshops);
 
         pets = carregarDados();
 
@@ -55,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(ADICIONAR_ACTIVITY_REQUEST, AdicionarPet.class);
+            }
+        });
+
+        btnGerenciarPetshops.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(3,GerenciarPetshops.class); // provisoriamente i: 3
             }
         });
     }
@@ -92,6 +102,13 @@ public class MainActivity extends AppCompatActivity {
                 pets.remove(position);
                 Toast.makeText(getApplicationContext(), "Pet adotado com sucesso!", Toast.LENGTH_SHORT).show();
                 startActivity(BUSCAR_ACTIVITY_REQUEST, BuscarPet.class);
+            }
+        }
+
+        if ( requestCode == ADICIONARPETSHOP_ACTIVITY_REQUEST ) {
+            if ( resultCode == RESULT_OK && data != null ) {
+                Toast.makeText(getApplicationContext(), "Petshop Adicionado com sucesso!", Toast.LENGTH_SHORT).show();
+//                startActivity(BUSCAR_ACTIVITY_REQUEST, AdicionarPetshop.class);
             }
         }
     }
