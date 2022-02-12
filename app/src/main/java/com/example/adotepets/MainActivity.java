@@ -15,10 +15,12 @@ import android.widget.Toast;
 
 import com.example.adotepets.fragments.InfoDialogFragment;
 import com.example.adotepets.model.Pet;
+import com.example.adotepets.services.MensagemService;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(3,GerenciarPetshops.class); // provisoriamente i: 3
             }
         });
+    }
+
+    @Override
+    protected void onPause () {
+        super.onPause();
+        Intent it = new Intent(getApplicationContext(), MensagemService.class);
+        it.putExtra(MensagemService.MSG, selecionaMensagemNotificacao());
+
+        startService(it);
     }
 
     @Override
@@ -132,5 +143,17 @@ public class MainActivity extends AppCompatActivity {
         Intent it = new Intent(getApplicationContext(), c);
         it.putExtra("lista_pets", (Serializable) pets);
         startActivityForResult(it, i);
+    }
+
+    public String selecionaMensagemNotificacao(){
+        int num = new Random().nextInt(5);
+        String frases[] = {
+                "Com meu pet, eu não aprendi apenas como é ter um animal de estimação, e sim a ter um amigo de verdade! Adote um pet!",
+                "Os pets dividem conosco o privilégio de existir! Adote um pet!",
+                "Conviver com animais de estimação é um dos maiores privilégios! Adote um pet!",
+                "A felicidade do seu animal de estimação é sua também! Adote um pet!",
+                "Animais de estimação precisam de atenção e carinho. Não confunda com bichinho de pelúcia. Adote um pet!"
+        };
+        return frases[num];
     }
 }

@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AdotePets">
+        <service android:name=".services.MensagemService" android:exported="false">
+
+        </service>
         <activity
             android:name=".AdicionarPetshop"
             android:exported="false" />
